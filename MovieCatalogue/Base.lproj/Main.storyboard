@@ -34,9 +34,6 @@
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwE-hD-vsp">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="200"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="200" id="xxW-XM-JJN"/>
-                                                            </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                     <integer key="value" value="8"/>
@@ -61,6 +58,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.67000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" priority="750" constant="200" id="7C9-TZ-67B"/>
                                                         <constraint firstAttribute="bottom" secondItem="Rbb-Y5-kZf" secondAttribute="bottom" constant="8" id="88T-mT-QrB"/>
                                                         <constraint firstItem="BwE-hD-vsp" firstAttribute="top" secondItem="qua-aO-MRT" secondAttribute="top" id="9ud-LP-uiB"/>
                                                         <constraint firstAttribute="trailing" secondItem="BwE-hD-vsp" secondAttribute="trailing" id="KEG-Ib-0QC"/>
@@ -156,7 +154,7 @@
                                                         <constraint firstItem="F9N-eq-kra" firstAttribute="top" secondItem="X6T-ng-DT1" secondAttribute="top" id="PNP-CY-xUC"/>
                                                         <constraint firstAttribute="bottom" secondItem="F9N-eq-kra" secondAttribute="bottom" id="VFw-v3-MLj"/>
                                                         <constraint firstItem="F9N-eq-kra" firstAttribute="leading" secondItem="X6T-ng-DT1" secondAttribute="leading" id="YVU-Ky-Grp"/>
-                                                        <constraint firstAttribute="height" constant="176" id="pMJ-RK-RgC"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="176" id="pMJ-RK-RgC"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
