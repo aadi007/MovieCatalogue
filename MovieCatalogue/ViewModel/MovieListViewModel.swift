@@ -85,9 +85,9 @@ final class MovieListViewModel {
                     do {
                         if let data = try moyaResponse.mapJSON() as? [String: Any] {
                             if let paginatedResponse = Mapper<MoviesPaginatedApiResponse>().map(JSONObject: data),
-                                let movies = paginatedResponse.results  {
+                                let _ = paginatedResponse.results  {
                                 self.totalPages = paginatedResponse.totalPages
-                                self.movies += movies
+                                self.movies += paginatedResponse.getFilteredMovieFor(year: currentYear)
                             }
                             print(data)
                             completionHandler(nil)

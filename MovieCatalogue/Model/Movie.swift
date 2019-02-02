@@ -42,4 +42,11 @@ class MoviesPaginatedApiResponse: Mappable {
         totalPages               <- map["total_pages"]
         results                  <- map["results"]
     }
-}
+    func getFilteredMovieFor(year: String) -> [Movie] {
+        if let movies = results {
+            return movies.filter({ $0.releaseDate?.contains(year) ?? false })
+        } else {
+            return [Movie]()
+        }
+    }
+ }

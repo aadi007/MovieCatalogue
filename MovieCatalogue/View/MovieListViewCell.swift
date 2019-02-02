@@ -15,6 +15,7 @@ class MovieListViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        posterImageView.addGradient(colors: [UIColor.black.withAlphaComponent(0.0).cgColor, UIColor.black.withAlphaComponent(0.5).cgColor], locations: [0.0, 1.0], cornerRadius: 4)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,6 +39,5 @@ class MovieListViewCell: UITableViewCell {
             let completeUrl = baseUrl + "w500" + pathUrl
             posterImageView.sd_setImage(with: URL(string: completeUrl)!, completed: nil)
         }
-        posterImageView.addGradient(colors: [UIColor.black.withAlphaComponent(0.0).cgColor, UIColor.black.withAlphaComponent(0.5).cgColor], locations: [0.0, 1.0], cornerRadius: 4)
     }
 }
