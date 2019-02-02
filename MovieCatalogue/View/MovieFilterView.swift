@@ -47,8 +47,13 @@ class MovieFilterView: UIView {
             let maxYearText = maxYearTextField.text, maxYearText.count == 4,
             let minYear = Int(minYearText),
             let maxYear = Int(maxYearText) {
+            let date = Date()
+            let calendar = Calendar.current
+            let currentYear = calendar.component(.year, from: date)
             if maxYear < minYear {
                 return (false, "MaxYear should not be greater than MinYear")
+            } else if maxYear > currentYear {
+                return (false, "MaxYear should not be greater than current year \(currentYear)")
             } else {
                 return (true, nil)
             }
