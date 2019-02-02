@@ -21,23 +21,26 @@ final class MovieListViewController: UIViewController {
         viewModel.fetchConfig { [weak self] (errorMessage) in
             guard let `self` = self else { return }
             if errorMessage == nil {
-                //fetch the list data
-                self.viewModel.fetchMovies(completionHandler: { [weak self] (errorMessage) in
-                    guard let `self` = self else { return }
-                    MBProgressHUD.hide(for: self.view, animated: true)
-                    if errorMessage != nil {
-                        //show the error Message
-                    } else {
-                        //reload the data
-                        DispatchQueue.main.async(execute: {
-                            self.tableView.reloadData()
-                        })
-                    }
-                })
+                self.fetchMovies()
             } else {
                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
+    }
+    
+    func fetchMovies() {
+        self.viewModel.fetchMovies(completionHandler: { [weak self] (errorMessage) in
+            guard let `self` = self else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if errorMessage != nil {
+                //show the error Message
+            } else {
+                //reload the data
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +60,11 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.movies.count
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.movies.count - 1 {
+            self.fetchMovies()
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListViewCell", for: indexPath) as? MovieListViewCell {

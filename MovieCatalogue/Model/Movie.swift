@@ -33,7 +33,7 @@ class Movie: Mappable {
 
 class MoviesPaginatedApiResponse: Mappable {
     var totalResults: Double = 0
-    var totalPages: Double = 0
+    var totalPages = 0
     var results: [Movie]?
     required init?(map: Map) {
     }
@@ -42,6 +42,4 @@ class MoviesPaginatedApiResponse: Mappable {
         totalPages               <- map["total_pages"]
         results                  <- map["results"]
     }
-    
-    
 }
