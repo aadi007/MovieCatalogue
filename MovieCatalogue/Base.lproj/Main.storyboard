@@ -37,13 +37,38 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="200" id="xxW-XM-JJN"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxi-DG-rn5">
+                                                            <rect key="frame" x="15" y="172.5" width="232" height="19.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-12-2010" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbb-Y5-kZf">
+                                                            <rect key="frame" x="257" y="175" width="80" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="80" id="qbf-je-rL9"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.67000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="Rbb-Y5-kZf" secondAttribute="bottom" constant="8" id="88T-mT-QrB"/>
                                                         <constraint firstItem="BwE-hD-vsp" firstAttribute="top" secondItem="qua-aO-MRT" secondAttribute="top" id="9ud-LP-uiB"/>
                                                         <constraint firstAttribute="trailing" secondItem="BwE-hD-vsp" secondAttribute="trailing" id="KEG-Ib-0QC"/>
+                                                        <constraint firstItem="Wxi-DG-rn5" firstAttribute="leading" secondItem="qua-aO-MRT" secondAttribute="leading" constant="15" id="OL6-Jr-A9c"/>
+                                                        <constraint firstItem="Rbb-Y5-kZf" firstAttribute="leading" secondItem="Wxi-DG-rn5" secondAttribute="trailing" constant="10" id="V1q-mu-nEy"/>
                                                         <constraint firstItem="BwE-hD-vsp" firstAttribute="leading" secondItem="qua-aO-MRT" secondAttribute="leading" id="WMG-XH-aKI"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Rbb-Y5-kZf" secondAttribute="trailing" constant="8" id="fxy-Bk-fd3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Wxi-DG-rn5" secondAttribute="bottom" constant="8" id="nQh-ef-756"/>
                                                         <constraint firstAttribute="bottom" secondItem="BwE-hD-vsp" secondAttribute="bottom" id="omC-Oc-enK"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -63,7 +88,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="movieTitle" destination="Wxi-DG-rn5" id="PuY-cv-Smh"/>
                                             <outlet property="posterImageView" destination="BwE-hD-vsp" id="c0y-Ro-Vfp"/>
+                                            <outlet property="releaseDate" destination="Rbb-Y5-kZf" id="WVR-fd-pbl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

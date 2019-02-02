@@ -16,7 +16,7 @@ class Movie: Mappable {
     var posterPath: String?
     var adult = false
     var overView: String?
-    var releaseDate: Date?
+    var releaseDate: String?
     required init?(map: Map) {
     }
     func mapping(map: Map) {
@@ -27,7 +27,7 @@ class Movie: Mappable {
         posterPath       <- map["poster_path"]
         adult           <- map["adult"]
         overView        <- map["overview"]
-        releaseDate      <- (map["releaseDate"], DateTransform())
+        releaseDate      <- map["release_date"]
     }
 }
 

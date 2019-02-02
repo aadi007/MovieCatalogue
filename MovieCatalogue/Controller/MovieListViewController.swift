@@ -105,6 +105,7 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
 }
 extension MovieListViewController: MovieFilterViewDelegate {
     func filterResult(minYear: Int, maxYear: Int) {
+        self.removeFilterView()
         viewModel.setfilterQuery(minyear: minYear, maxYear: maxYear)
         self.tableView.reloadData()
         MBProgressHUD.showAdded(to: self.view, animated: true)
