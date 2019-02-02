@@ -12,10 +12,10 @@ import ObjectMapper
 class MovieDetailViewModel: NSObject {
     private var networkResource: NetworkProvider<NetworkRouter> = AppProvider.networkManager
     var movieDetail = [Any]()
+    var movieDisplayTitle = ["poster", "Title: ", "Overview: ", "Release Data: ", "Popularity: ", "Vote Average: ", "Vote Count: ", "Adult: "]
     init(networkProvider: NetworkProvider<NetworkRouter>) {
         self.networkResource = networkProvider
     }
-    
     func fetchMovieDetails(id: Double, completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
         networkResource.request(NetworkRouter.getMovieDetails(id: id)) { result in
             switch result {

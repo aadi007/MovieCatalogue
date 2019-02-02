@@ -17,8 +17,17 @@ class MoveiDetailInfoViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    func configure(title: String, value: Any) {
+        var info = title
+        if let valueText = value as? String {
+            info += valueText
+        } else if let valueDouble = value as? Double {
+            info += valueDouble.description
+        } else if let valueBool = value as? Bool {
+            info += valueBool.description
+        }
+        infoLabel.text = info
+    }
 }

@@ -49,6 +49,8 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
             }
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MoveiDetailInfoViewCell", for: indexPath) as? MoveiDetailInfoViewCell {
+                let title = viewModel.movieDisplayTitle[indexPath.row]
+                cell.configure(title: title, value: value)
                 return cell
             }
         }
