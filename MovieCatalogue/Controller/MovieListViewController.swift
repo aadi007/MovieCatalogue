@@ -71,6 +71,8 @@ final class MovieListViewController: UIViewController {
     func removeFilterView() {
         backgroundView?.removeFromSuperview()
         filterView?.removeFromSuperview()
+        backgroundView = nil
+        filterView = nil
     }
 }
 extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {

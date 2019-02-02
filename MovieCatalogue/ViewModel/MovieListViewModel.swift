@@ -9,8 +9,8 @@
 import UIKit
 import ObjectMapper
 final class MovieListViewModel {
-    var maxYear = 2019
-    var minYear = 2019
+    var maxYear = 2018
+    var minYear = 2018
     var imageConfig: ImageConfiguration?
     private var queryArray = [String]()
     private var networkResource: NetworkProvider<NetworkRouter> = AppProvider.networkManager
