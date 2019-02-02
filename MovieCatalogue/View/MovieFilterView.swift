@@ -8,11 +8,17 @@
 
 import UIKit
 
+protocol MovieFilterViewDelegate: class {
+    func filterCancelViewPressed()
+    func validationError(errorMessage: String)
+}
+
 class MovieFilterView: UIView {
     @IBOutlet weak var descriptionText: UILabel!
     @IBOutlet weak var minYearTextField: UITextField!
     @IBOutlet weak var maxYearTextField: UITextField!
     var view: UIView!
+    weak var delegate: MovieFilterViewDelegate?
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
@@ -36,9 +42,27 @@ class MovieFilterView: UIView {
             return UIView()
         }
     }
-
+    func validateInput() -> (Bool, String?) {
+        if let minYearText = minYearTextField.text, minYearText.count == 4,
+            let maxYearText = maxYearTextField.text, maxYearText.count == 4,
+            let minYear = Int(minYearText),
+            let maxYear = Int(maxYearText) {
+            if maxYear < minYear {
+                return (false, "MaxYear should not be greater than MinYear")
+            } else {
+                return (true, nil)
+            }
+        } else {
+            return (false, "Please enter proper year (Must be of four digit e.g 2014)")
+        }
+    }
     @IBAction func filterButtonTapped(_ sender: Any) {
+        let result = validateInput()
+        if !result.0 {
+            delegate?.validationError(errorMessage: result.1!)
+        }
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
+        delegate?.filterCancelViewPressed()
     }
 }

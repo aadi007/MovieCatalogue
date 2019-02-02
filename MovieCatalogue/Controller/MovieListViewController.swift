@@ -12,6 +12,8 @@ import MBProgressHUD
 final class MovieListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel: MovieListViewModel!
+    private var backgroundView: UIView?
+    private var filterView: MovieFilterView?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
@@ -51,16 +53,25 @@ final class MovieListViewController: UIViewController {
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
-        let backgroundView = UIView()
-        backgroundView.frame = self.view.frame
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.view.addSubview(backgroundView)
-        //display the filter view
-        let filterView = MovieFilterView()
-        filterView.frame = CGRect(x: 0, y: self.navigationController?.navigationBar.frame.size.height ?? 44, width: self.view.bounds.width, height: 250)
-        self.view.addSubview(filterView)
+        if filterView == nil {
+            addFilterView()
+        }
     }
-
+    func addFilterView() {
+        backgroundView = UIView()
+        backgroundView?.frame = self.view.frame
+        backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.view.addSubview(backgroundView!)
+        //display the filter view
+        filterView = MovieFilterView()
+        filterView?.delegate = self
+        filterView?.frame = CGRect(x: 0, y: self.navigationController?.navigationBar.frame.size.height ?? 44, width: self.view.bounds.width, height: 250)
+        self.view.addSubview(filterView!)
+    }
+    func removeFilterView() {
+        backgroundView?.removeFromSuperview()
+        filterView?.removeFromSuperview()
+    }
 }
 extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,5 +101,15 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
             viewController.imageConfig = viewModel.imageConfig!
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+}
+extension MovieListViewController: MovieFilterViewDelegate {
+    func validationError(errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func filterCancelViewPressed() {
+        self.removeFilterView()
     }
 }
