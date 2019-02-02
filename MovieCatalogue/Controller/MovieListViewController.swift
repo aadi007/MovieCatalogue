@@ -51,6 +51,14 @@ final class MovieListViewController: UIViewController {
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
+        let backgroundView = UIView()
+        backgroundView.frame = self.view.frame
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.view.addSubview(backgroundView)
+        //display the filter view
+        let filterView = MovieFilterView()
+        filterView.frame = CGRect(x: 0, y: self.navigationController?.navigationBar.frame.size.height ?? 44, width: self.view.bounds.width, height: 250)
+        self.view.addSubview(filterView)
     }
 
 }

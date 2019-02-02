@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieFilterView" customModule="MovieCatalogue" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionText" destination="Xqj-w5-8AV" id="IdR-X2-DCU"/>
+                <outlet property="maxYearTextField" destination="8bJ-UP-ZOq" id="lhZ-9b-cwC"/>
+                <outlet property="minYearTextField" destination="TIB-TM-t3c" id="WEs-M1-T4p"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="357" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qT-dJ-Sur">
+                    <rect key="frame" x="0.0" y="0.0" width="357" height="132"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min year: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9b-XS-QWk">
+                            <rect key="frame" x="15" y="15" width="74.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TIB-TM-t3c">
+                            <rect key="frame" x="104.5" y="10.5" width="237.5" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max year: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikC-jz-zSV">
+                            <rect key="frame" x="15" y="51" width="78.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8bJ-UP-ZOq">
+                            <rect key="frame" x="108.5" y="46.5" width="233.5" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movies will be filtered in ascending order of the min and max year" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqj-w5-8AV">
+                            <rect key="frame" x="15" y="90.5" width="327" height="31.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Xqj-w5-8AV" secondAttribute="bottom" constant="10" id="32c-BG-cg9"/>
+                        <constraint firstItem="ikC-jz-zSV" firstAttribute="leading" secondItem="D9b-XS-QWk" secondAttribute="leading" id="5Kw-ia-jJR"/>
+                        <constraint firstItem="ikC-jz-zSV" firstAttribute="top" secondItem="D9b-XS-QWk" secondAttribute="bottom" constant="15" id="82j-JM-tRI"/>
+                        <constraint firstItem="8bJ-UP-ZOq" firstAttribute="trailing" secondItem="TIB-TM-t3c" secondAttribute="trailing" id="HrJ-5y-y4k"/>
+                        <constraint firstItem="TIB-TM-t3c" firstAttribute="centerY" secondItem="D9b-XS-QWk" secondAttribute="centerY" id="ISL-TN-nZ6"/>
+                        <constraint firstItem="8bJ-UP-ZOq" firstAttribute="top" secondItem="TIB-TM-t3c" secondAttribute="bottom" constant="6" id="JYu-Ye-pBs"/>
+                        <constraint firstItem="TIB-TM-t3c" firstAttribute="leading" secondItem="D9b-XS-QWk" secondAttribute="trailing" constant="15" id="Pe3-Kj-J0m"/>
+                        <constraint firstAttribute="trailing" secondItem="Xqj-w5-8AV" secondAttribute="trailing" constant="15" id="QOj-S8-azV"/>
+                        <constraint firstItem="Xqj-w5-8AV" firstAttribute="top" secondItem="8bJ-UP-ZOq" secondAttribute="bottom" constant="14" id="TJG-BP-QRb"/>
+                        <constraint firstItem="D9b-XS-QWk" firstAttribute="top" secondItem="7qT-dJ-Sur" secondAttribute="top" constant="15" id="a8F-NP-7P5"/>
+                        <constraint firstItem="D9b-XS-QWk" firstAttribute="leading" secondItem="7qT-dJ-Sur" secondAttribute="leading" constant="15" id="fjF-aR-bBc"/>
+                        <constraint firstItem="8bJ-UP-ZOq" firstAttribute="centerY" secondItem="ikC-jz-zSV" secondAttribute="centerY" id="iuS-Al-ojC"/>
+                        <constraint firstItem="Xqj-w5-8AV" firstAttribute="leading" secondItem="7qT-dJ-Sur" secondAttribute="leading" constant="15" id="iyC-Sb-XfA"/>
+                        <constraint firstItem="8bJ-UP-ZOq" firstAttribute="leading" secondItem="ikC-jz-zSV" secondAttribute="trailing" constant="15" id="lke-E8-PwP"/>
+                        <constraint firstAttribute="trailing" secondItem="TIB-TM-t3c" secondAttribute="trailing" constant="15" id="nOi-ip-R4O"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZI1-71-Nxq">
+                    <rect key="frame" x="0.0" y="132" width="178" height="68"/>
+                    <color key="backgroundColor" red="1" green="0.76862745099999996" blue="0.0" alpha="0.96999999999999997" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <state key="normal" title="Filter">
+                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="MuW-1Q-vJD"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn0-3T-4E8">
+                    <rect key="frame" x="179" y="132" width="178" height="68"/>
+                    <color key="backgroundColor" red="1" green="0.76862745099999996" blue="0.0" alpha="0.96999999999999997" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="68" id="dvY-1e-BP6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="4OB-G3-YjQ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ZI1-71-Nxq" firstAttribute="width" secondItem="Hn0-3T-4E8" secondAttribute="width" id="Dl8-9d-fnZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Hn0-3T-4E8" secondAttribute="bottom" id="H3K-ss-KMo"/>
+                <constraint firstItem="7qT-dJ-Sur" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="KWQ-Og-kr0"/>
+                <constraint firstItem="Hn0-3T-4E8" firstAttribute="leading" secondItem="ZI1-71-Nxq" secondAttribute="trailing" constant="1" id="Ljr-To-pmt"/>
+                <constraint firstItem="ZI1-71-Nxq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LoT-49-7Ah"/>
+                <constraint firstItem="Hn0-3T-4E8" firstAttribute="top" secondItem="7qT-dJ-Sur" secondAttribute="bottom" id="aOs-vK-Ow0"/>
+                <constraint firstItem="7qT-dJ-Sur" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dPa-Jn-aqH"/>
+                <constraint firstItem="7qT-dJ-Sur" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fJv-BH-CMW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Hn0-3T-4E8" secondAttribute="trailing" id="nku-ed-N7V"/>
+                <constraint firstItem="ZI1-71-Nxq" firstAttribute="height" secondItem="Hn0-3T-4E8" secondAttribute="height" id="sWd-Nj-dNd"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ZI1-71-Nxq" secondAttribute="bottom" id="vJc-BK-2Mv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-64.799999999999997" y="-55.772113943028494"/>
+        </view>
+    </objects>
+</document>
