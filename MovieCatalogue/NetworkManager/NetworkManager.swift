@@ -13,39 +13,40 @@ let API_KEY = "a0332783bce8a7c77ad0c76a4071c1a1"
 
 public typealias NetworkProvider = MoyaProvider
 enum NetworkRouter {
-    case getPopularMovies(page: Int)
-    case getData(resourceId: String, limit: Int, query: String)
+    case getConfig
+    case searchMovies(page: Int, query: String)
 }
 extension NetworkRouter: TargetType {
-    var baseURL: URL { return URL(string: "https://data.gov.sg/api/action/")! }
+    var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
     var path: String {
         switch self {
-        case .getPopularMovies:
-            return "movie/popular"
-        case .getData:
-            return "datastore_search"
+        case .getConfig:
+            return "configuration"
+        case .searchMovies:
+            return "search/movie"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .getData, .getPopularMovies:
+        case .searchMovies,
+            .getConfig:
             return .get
         }
     }
     var task: Task {
         switch self {
-        case let .getData(resourceId, limit, query):  // Always sends parameters in URL, regardless of which HTTP method is used
-            return .requestParameters(parameters: ["resource_id": resourceId, "limit": limit, "q": query], encoding: URLEncoding.queryString)
-        case let .getPopularMovies(page):
-            return .requestParameters(parameters: ["api_key": API_KEY, "page": page], encoding: URLEncoding.queryString)
+        case .getConfig:
+            return .requestParameters(parameters: ["api_key": API_KEY], encoding: URLEncoding.queryString)
+        case let .searchMovies(page, query):
+            return .requestParameters(parameters: ["api_key": API_KEY, "page": page, "query": query], encoding: URLEncoding.queryString)
         }
     }
     var sampleData: Data {
         switch self {
-        case .getData:
-            return StubResponse.fromJSONFile("RecordResponse")
-        case .getPopularMovies:
-            return StubResponse.fromJSONFile("PopularMovies")
+        case .getConfig:
+            return StubResponse.fromJSONFile("MoviesConfiguration")
+        case .searchMovies:
+            return StubResponse.fromJSONFile("SearchMovies")
         }
     }
     var headers: [String: String]? {
