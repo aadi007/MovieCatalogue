@@ -44,6 +44,15 @@
 		1535A4062205EEE700F376A6 /* MoveiDetailInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4052205EEE700F376A6 /* MoveiDetailInfoViewCell.swift */; };
 		1535A4072205EEE700F376A6 /* MoveiDetailInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4052205EEE700F376A6 /* MoveiDetailInfoViewCell.swift */; };
 		1535A4082205EEE700F376A6 /* MoveiDetailInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4052205EEE700F376A6 /* MoveiDetailInfoViewCell.swift */; };
+		1535A40A2205FF6A00F376A6 /* MovieFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1535A4092205FF6A00F376A6 /* MovieFilterView.xib */; };
+		1535A40B2205FF6A00F376A6 /* MovieFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1535A4092205FF6A00F376A6 /* MovieFilterView.xib */; };
+		1535A40C2205FF6A00F376A6 /* MovieFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1535A4092205FF6A00F376A6 /* MovieFilterView.xib */; };
+		1535A40E2206028F00F376A6 /* MovieFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A40D2206028F00F376A6 /* MovieFilterView.swift */; };
+		1535A40F2206028F00F376A6 /* MovieFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A40D2206028F00F376A6 /* MovieFilterView.swift */; };
+		1535A4102206028F00F376A6 /* MovieFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A40D2206028F00F376A6 /* MovieFilterView.swift */; };
+		1535A4132206144200F376A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4122206144100F376A6 /* UIView+Additions.swift */; };
+		1535A4142206144200F376A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4122206144100F376A6 /* UIView+Additions.swift */; };
+		1535A4152206144200F376A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4122206144100F376A6 /* UIView+Additions.swift */; };
 		1573865D2204D7B7000F3317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1573865C2204D7B7000F3317 /* AppDelegate.swift */; };
 		157386622204D7B7000F3317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157386602204D7B7000F3317 /* Main.storyboard */; };
 		157386642204D7BA000F3317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157386632204D7BA000F3317 /* Assets.xcassets */; };
@@ -90,6 +99,9 @@
 		1535A3FD2205DC3B00F376A6 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 		1535A4012205EC8600F376A6 /* MovieDetailPosterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPosterViewCell.swift; sourceTree = "<group>"; };
 		1535A4052205EEE700F376A6 /* MoveiDetailInfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveiDetailInfoViewCell.swift; sourceTree = "<group>"; };
+		1535A4092205FF6A00F376A6 /* MovieFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieFilterView.xib; sourceTree = "<group>"; };
+		1535A40D2206028F00F376A6 /* MovieFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFilterView.swift; sourceTree = "<group>"; };
+		1535A4122206144100F376A6 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		157386592204D7B7000F3317 /* MovieCatalogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieCatalogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1573865C2204D7B7000F3317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157386612204D7B7000F3317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,8 +189,18 @@
 				1535A3ED220569AF00F376A6 /* MovieListViewCell.swift */,
 				1535A4012205EC8600F376A6 /* MovieDetailPosterViewCell.swift */,
 				1535A4052205EEE700F376A6 /* MoveiDetailInfoViewCell.swift */,
+				1535A4092205FF6A00F376A6 /* MovieFilterView.xib */,
+				1535A40D2206028F00F376A6 /* MovieFilterView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1535A4112206141000F376A6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1535A4122206144100F376A6 /* UIView+Additions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		157386502204D7B7000F3317 = {
@@ -206,6 +228,7 @@
 		1573865B2204D7B7000F3317 /* MovieCatalogue */ = {
 			isa = PBXGroup;
 			children = (
+				1535A4112206141000F376A6 /* Utilities */,
 				1535A3EC2205699400F376A6 /* View */,
 				1535A3D5220555B200F376A6 /* Controller */,
 				1535A3DA2205570200F376A6 /* ViewModel */,
@@ -389,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1535A3E02205588000F376A6 /* MoviesConfiguration.json in Resources */,
+				1535A40A2205FF6A00F376A6 /* MovieFilterView.xib in Resources */,
 				157386912204DEBC000F3317 /* SearchMovies.json in Resources */,
 				157386672204D7BA000F3317 /* LaunchScreen.storyboard in Resources */,
 				157386642204D7BA000F3317 /* Assets.xcassets in Resources */,
@@ -402,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				157386922204DEBC000F3317 /* SearchMovies.json in Resources */,
+				1535A40B2205FF6A00F376A6 /* MovieFilterView.xib in Resources */,
 				1535A3E12205588000F376A6 /* MoviesConfiguration.json in Resources */,
 				1535A3FB2205DB9F00F376A6 /* MovieDetail.json in Resources */,
 			);
@@ -412,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				157386932204DEBC000F3317 /* SearchMovies.json in Resources */,
+				1535A40C2205FF6A00F376A6 /* MovieFilterView.xib in Resources */,
 				1535A3E22205588000F376A6 /* MoviesConfiguration.json in Resources */,
 				1535A3FC2205DB9F00F376A6 /* MovieDetail.json in Resources */,
 			);
@@ -519,7 +545,9 @@
 				1535A3D7220555D300F376A6 /* MovieListViewController.swift in Sources */,
 				1535A3FE2205DC3B00F376A6 /* MovieDetail.swift in Sources */,
 				1535A3DC2205571A00F376A6 /* MovieListViewModel.swift in Sources */,
+				1535A40E2206028F00F376A6 /* MovieFilterView.swift in Sources */,
 				1535A4062205EEE700F376A6 /* MoveiDetailInfoViewCell.swift in Sources */,
+				1535A4132206144200F376A6 /* UIView+Additions.swift in Sources */,
 				1535A3F62205DACC00F376A6 /* MovieDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,7 +566,9 @@
 				157386722204D7BA000F3317 /* MovieCatalogueTests.swift in Sources */,
 				1535A3FF2205DC3B00F376A6 /* MovieDetail.swift in Sources */,
 				1535A3DD2205571C00F376A6 /* MovieListViewModel.swift in Sources */,
+				1535A40F2206028F00F376A6 /* MovieFilterView.swift in Sources */,
 				1535A4072205EEE700F376A6 /* MoveiDetailInfoViewCell.swift in Sources */,
+				1535A4142206144200F376A6 /* UIView+Additions.swift in Sources */,
 				1535A3F72205DACC00F376A6 /* MovieDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,7 +587,9 @@
 				1573867D2204D7BA000F3317 /* MovieCatalogueUITests.swift in Sources */,
 				1535A4002205DC3B00F376A6 /* MovieDetail.swift in Sources */,
 				1535A3DE2205571C00F376A6 /* MovieListViewModel.swift in Sources */,
+				1535A4102206028F00F376A6 /* MovieFilterView.swift in Sources */,
 				1535A4082205EEE700F376A6 /* MoveiDetailInfoViewCell.swift in Sources */,
+				1535A4152206144200F376A6 /* UIView+Additions.swift in Sources */,
 				1535A3F82205DACC00F376A6 /* MovieDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,7 +751,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69X527K7GA;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MovieCatalogue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -738,7 +770,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69X527K7GA;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MovieCatalogue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

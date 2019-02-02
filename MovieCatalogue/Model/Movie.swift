@@ -16,7 +16,7 @@ class Movie: Mappable {
     var posterPath: String?
     var adult = false
     var overView: String?
-    var releaseDate: Date?
+    var releaseDate: String?
     required init?(map: Map) {
     }
     func mapping(map: Map) {
@@ -27,13 +27,13 @@ class Movie: Mappable {
         posterPath       <- map["poster_path"]
         adult           <- map["adult"]
         overView        <- map["overview"]
-        releaseDate      <- (map["releaseDate"], DateTransform())
+        releaseDate      <- map["release_date"]
     }
 }
 
 class MoviesPaginatedApiResponse: Mappable {
     var totalResults: Double = 0
-    var totalPages: Double = 0
+    var totalPages = 0
     var results: [Movie]?
     required init?(map: Map) {
     }
@@ -42,6 +42,11 @@ class MoviesPaginatedApiResponse: Mappable {
         totalPages               <- map["total_pages"]
         results                  <- map["results"]
     }
-    
-    
-}
+    func getFilteredMovieFor(year: String) -> [Movie] {
+        if let movies = results {
+            return movies.filter({ $0.releaseDate?.contains(year) ?? false })
+        } else {
+            return [Movie]()
+        }
+    }
+ }

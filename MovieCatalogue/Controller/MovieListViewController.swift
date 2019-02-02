@@ -12,6 +12,8 @@ import MBProgressHUD
 final class MovieListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var viewModel: MovieListViewModel!
+    private var backgroundView: UIView?
+    private var filterView: MovieFilterView?
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.separatorStyle = .none
@@ -21,23 +23,26 @@ final class MovieListViewController: UIViewController {
         viewModel.fetchConfig { [weak self] (errorMessage) in
             guard let `self` = self else { return }
             if errorMessage == nil {
-                //fetch the list data
-                self.viewModel.fetchMovies(completionHandler: { [weak self] (errorMessage) in
-                    guard let `self` = self else { return }
-                    MBProgressHUD.hide(for: self.view, animated: true)
-                    if errorMessage != nil {
-                        //show the error Message
-                    } else {
-                        //reload the data
-                        DispatchQueue.main.async(execute: {
-                            self.tableView.reloadData()
-                        })
-                    }
-                })
+                self.fetchMovies()
             } else {
                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
+    }
+    
+    func fetchMovies() {
+        self.viewModel.fetchMovies(completionHandler: { [weak self] (errorMessage) in
+            guard let `self` = self else { return }
+            MBProgressHUD.hide(for: self.view, animated: true)
+            if errorMessage != nil {
+                //show the error Message
+            } else {
+                //reload the data
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +53,25 @@ final class MovieListViewController: UIViewController {
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {
+        if filterView == nil {
+            addFilterView()
+        }
     }
-
+    func addFilterView() {
+        backgroundView = UIView()
+        backgroundView?.frame = self.view.frame
+        backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.view.addSubview(backgroundView!)
+        //display the filter view
+        filterView = MovieFilterView()
+        filterView?.delegate = self
+        filterView?.frame = CGRect(x: 0, y: self.navigationController?.navigationBar.frame.size.height ?? 44, width: self.view.bounds.width, height: 250)
+        self.view.addSubview(filterView!)
+    }
+    func removeFilterView() {
+        backgroundView?.removeFromSuperview()
+        filterView?.removeFromSuperview()
+    }
 }
 extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,6 +79,11 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.movies.count
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.movies.count - 1 {
+            self.fetchMovies()
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListViewCell", for: indexPath) as? MovieListViewCell {
@@ -74,5 +101,22 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
             viewController.imageConfig = viewModel.imageConfig!
             self.navigationController?.pushViewController(viewController, animated: true)
         }
+    }
+}
+extension MovieListViewController: MovieFilterViewDelegate {
+    func filterResult(minYear: Int, maxYear: Int) {
+        self.removeFilterView()
+        viewModel.setfilterQuery(minyear: minYear, maxYear: maxYear)
+        self.tableView.reloadData()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.fetchMovies()
+    }
+    func validationError(errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func filterCancelViewPressed() {
+        self.removeFilterView()
     }
 }
