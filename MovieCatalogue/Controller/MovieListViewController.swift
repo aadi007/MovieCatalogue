@@ -40,6 +40,13 @@ final class MovieListViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = "TMDB List"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationItem.title = ""
+    }
+    
     @IBAction func filterButtonTapped(_ sender: Any) {
     }
 
@@ -61,6 +68,11 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let movie = viewModel.movies[indexPath.row]
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
+            viewController.movieId = movie.id
+            viewController.imageConfig = viewModel.imageConfig!
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
     }
 }

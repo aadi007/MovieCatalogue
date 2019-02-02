@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieListViewCell" rowHeight="243" id="6xd-ko-m5L" customClass="MovieListViewCell" customModule="MovieCatalogue" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MovieListViewCell" rowHeight="243" id="6xd-ko-m5L" customClass="MovieListViewCell" customModule="MovieCatalogue" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="243"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6xd-ko-m5L" id="b3R-96-m2Z">
@@ -78,7 +78,7 @@
                             <constraint firstItem="j4E-C1-atH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Aan-gj-fLS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j4E-C1-atH" secondAttribute="trailing" id="IOp-EF-c66"/>
                             <constraint firstItem="j4E-C1-atH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UG2-Ce-ylg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="j4E-C1-atH" secondAttribute="bottom" id="Veg-1Y-f8X"/>
+                            <constraint firstAttribute="bottom" secondItem="j4E-C1-atH" secondAttribute="bottom" id="Veg-1Y-f8X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -96,6 +96,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="837.60000000000002" y="792.95352323838085"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="laE-pb-CSB">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailViewController" id="BRq-d7-bYt" customClass="MovieDetailViewController" customModule="MovieCatalogue" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iZj-q3-8mL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PIY-Nq-5ZG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieDetailPosterViewCell" rowHeight="199" id="1fU-OS-WOc" customClass="MovieDetailPosterViewCell" customModule="MovieCatalogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="199"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1fU-OS-WOc" id="gWC-Zp-wA6">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="198.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6T-ng-DT1">
+                                                    <rect key="frame" x="15" y="11" width="345" height="176"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F9N-eq-kra">
+                                                            <rect key="frame" x="0.0" y="0.0" width="345" height="176"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="F9N-eq-kra" secondAttribute="trailing" id="9yN-6b-OfA"/>
+                                                        <constraint firstItem="F9N-eq-kra" firstAttribute="top" secondItem="X6T-ng-DT1" secondAttribute="top" id="PNP-CY-xUC"/>
+                                                        <constraint firstAttribute="bottom" secondItem="F9N-eq-kra" secondAttribute="bottom" id="VFw-v3-MLj"/>
+                                                        <constraint firstItem="F9N-eq-kra" firstAttribute="leading" secondItem="X6T-ng-DT1" secondAttribute="leading" id="YVU-Ky-Grp"/>
+                                                        <constraint firstAttribute="height" constant="176" id="pMJ-RK-RgC"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="X6T-ng-DT1" firstAttribute="leading" secondItem="gWC-Zp-wA6" secondAttribute="leading" constant="15" id="6Cr-32-x71"/>
+                                                <constraint firstAttribute="trailing" secondItem="X6T-ng-DT1" secondAttribute="trailing" constant="15" id="G18-6O-Rd6"/>
+                                                <constraint firstItem="X6T-ng-DT1" firstAttribute="top" secondItem="gWC-Zp-wA6" secondAttribute="top" constant="11" id="OaR-E6-vmS"/>
+                                                <constraint firstAttribute="bottom" secondItem="X6T-ng-DT1" secondAttribute="bottom" constant="11.5" id="sIh-mw-l6c"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="F9N-eq-kra" id="UlH-OD-O0v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoveiDetailInfoViewCell" rowHeight="43" id="kdf-nz-swe" customClass="MoveiDetailInfoViewCell" customModule="MovieCatalogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="227" width="375" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kdf-nz-swe" id="nf2-ZX-wqa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="42.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXn-jE-9uh">
+                                                    <rect key="frame" x="15" y="11" width="345" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="zXn-jE-9uh" secondAttribute="trailing" constant="15" id="FqD-Yu-hwu"/>
+                                                <constraint firstItem="zXn-jE-9uh" firstAttribute="top" secondItem="nf2-ZX-wqa" secondAttribute="top" constant="11" id="MfP-Yh-20q"/>
+                                                <constraint firstAttribute="bottom" secondItem="zXn-jE-9uh" secondAttribute="bottom" constant="11" id="WfZ-3o-MfE"/>
+                                                <constraint firstItem="zXn-jE-9uh" firstAttribute="leading" secondItem="nf2-ZX-wqa" secondAttribute="leading" constant="15" id="fVD-kJ-JRv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="infoLabel" destination="zXn-jE-9uh" id="8Sr-nS-ntL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BRq-d7-bYt" id="dcj-qC-Dj2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PIY-Nq-5ZG" firstAttribute="bottom" secondItem="iZj-q3-8mL" secondAttribute="bottom" id="P7S-sm-TRw"/>
+                            <constraint firstItem="PIY-Nq-5ZG" firstAttribute="top" secondItem="iZj-q3-8mL" secondAttribute="top" id="Tbr-QE-MGd"/>
+                            <constraint firstItem="PIY-Nq-5ZG" firstAttribute="trailing" secondItem="21V-Jl-8I8" secondAttribute="trailing" id="b8v-1O-1VS"/>
+                            <constraint firstItem="PIY-Nq-5ZG" firstAttribute="leading" secondItem="21V-Jl-8I8" secondAttribute="leading" id="w4S-cW-bOW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="21V-Jl-8I8"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="PIY-Nq-5ZG" id="afK-C0-qX6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJz-4R-bne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474.4000000000001" y="791.15442278860576"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dKa-4T-2ns">
