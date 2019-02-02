@@ -15,6 +15,7 @@ public typealias NetworkProvider = MoyaProvider
 enum NetworkRouter {
     case getConfig
     case searchMovies(page: Int, query: String)
+    case getMovieDetails(id: Double)
 }
 extension NetworkRouter: TargetType {
     var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
@@ -24,18 +25,22 @@ extension NetworkRouter: TargetType {
             return "configuration"
         case .searchMovies:
             return "search/movie"
+        case .getMovieDetails(let id):
+            return "movie/\(id)"
         }
     }
     var method: Moya.Method {
         switch self {
         case .searchMovies,
-            .getConfig:
+            .getConfig,
+            .getMovieDetails:
             return .get
         }
     }
     var task: Task {
         switch self {
-        case .getConfig:
+        case .getConfig,
+            .getMovieDetails:
             return .requestParameters(parameters: ["api_key": API_KEY], encoding: URLEncoding.queryString)
         case let .searchMovies(page, query):
             return .requestParameters(parameters: ["api_key": API_KEY, "page": page, "query": query], encoding: URLEncoding.queryString)
@@ -47,6 +52,8 @@ extension NetworkRouter: TargetType {
             return StubResponse.fromJSONFile("MoviesConfiguration")
         case .searchMovies:
             return StubResponse.fromJSONFile("SearchMovies")
+        case .getMovieDetails:
+            return StubResponse.fromJSONFile("MovieDetail")
         }
     }
     var headers: [String: String]? {
