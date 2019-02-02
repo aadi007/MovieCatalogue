@@ -104,6 +104,12 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension MovieListViewController: MovieFilterViewDelegate {
+    func filterResult(minYear: Int, maxYear: Int) {
+        viewModel.setfilterQuery(minyear: minYear, maxYear: maxYear)
+        self.tableView.reloadData()
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        self.fetchMovies()
+    }
     func validationError(errorMessage: String) {
         let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))

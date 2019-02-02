@@ -11,6 +11,7 @@ import UIKit
 protocol MovieFilterViewDelegate: class {
     func filterCancelViewPressed()
     func validationError(errorMessage: String)
+    func filterResult(minYear: Int, maxYear: Int)
 }
 
 class MovieFilterView: UIView {
@@ -65,6 +66,10 @@ class MovieFilterView: UIView {
         let result = validateInput()
         if !result.0 {
             delegate?.validationError(errorMessage: result.1!)
+        } else {
+            let minYear = Int(minYearTextField.text!)
+            let maxYear = Int(maxYearTextField.text!)
+            delegate?.filterResult(minYear: minYear!, maxYear: maxYear!)
         }
     }
     @IBAction func cancelButtonTapped(_ sender: Any) {
