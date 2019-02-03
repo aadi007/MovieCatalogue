@@ -45,5 +45,4 @@ class MovieCatalogueUITests: XCTestCase {
         let tablesQuery = app.tables
         XCTAssert(tablesQuery.count > 0)
     }
-
 }
