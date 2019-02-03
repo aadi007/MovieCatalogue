@@ -31,5 +31,18 @@ class MovieCatalogueUITests: XCTestCase {
         let tablesQuery = app.tables
         XCTAssert(tablesQuery.count > 0)
     }
-
+    
+    func testMovieFilterScreen() {
+        let app = XCUIApplication()
+        app.navigationBars["TMDB List"].buttons["Filter"].tap()
+        let minYear = app.textFields["e.g 2008"]
+        minYear.tap()
+        minYear.typeText("2008")
+        let maxYear = app.textFields["e.g 2012"]
+        maxYear.tap()
+        maxYear.typeText("2012")
+        app.buttons["FilterResult"].tap()
+        let tablesQuery = app.tables
+        XCTAssert(tablesQuery.count > 0)
+    }
 }

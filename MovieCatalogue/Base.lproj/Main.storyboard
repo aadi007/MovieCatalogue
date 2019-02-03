@@ -141,6 +141,9 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="MoviesListTable"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="PLA-3x-3lw"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="7dG-cF-Yfm"/>

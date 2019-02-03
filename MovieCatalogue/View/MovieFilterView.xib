@@ -78,6 +78,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZI1-71-Nxq">
                     <rect key="frame" x="0.0" y="132" width="178" height="68"/>
                     <color key="backgroundColor" red="1" green="0.76862745099999996" blue="0.0" alpha="0.96999999999999997" colorSpace="calibratedRGB"/>
+                    <accessibility key="accessibilityConfiguration" label="FilterResult"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <state key="normal" title="Filter">
                         <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
