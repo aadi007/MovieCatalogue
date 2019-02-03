@@ -8,7 +8,7 @@
 
 import UIKit
 import MBProgressHUD
-class MovieDetailViewController: UIViewController {
+final class MovieDetailViewController: UIViewController {
     var movieId: Double!
     var imageConfig: ImageConfiguration!
     private var viewModel: MovieDetailViewModel!
@@ -26,7 +26,7 @@ class MovieDetailViewController: UIViewController {
             guard let `self` = self else { return }
             MBProgressHUD.hide(for: self.view, animated: true)
             if errorMessage != nil {
-                //display alert
+                self.displayErrorAlert(errorMessage: errorMessage ?? "Unknown Error")
             } else {
                 self.tableView.reloadData()
             }

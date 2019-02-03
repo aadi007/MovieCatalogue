@@ -25,7 +25,8 @@ final class MovieListViewController: UIViewController {
             if errorMessage == nil {
                 self.fetchMovies()
             } else {
-               MBProgressHUD.hide(for: self.view, animated: true)
+                self.displayErrorAlert(errorMessage: errorMessage ?? "Unknown Error")
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
     }
@@ -35,7 +36,9 @@ final class MovieListViewController: UIViewController {
             guard let `self` = self else { return }
             MBProgressHUD.hide(for: self.view, animated: true)
             if errorMessage != nil {
-                //show the error Message
+                DispatchQueue.main.async(execute: {
+                    self.displayErrorAlert(errorMessage: errorMessage ?? "Unknown Error")
+                })
             } else {
                 //reload the data
                 DispatchQueue.main.async(execute: {
@@ -116,9 +119,7 @@ extension MovieListViewController: MovieFilterViewDelegate {
         self.fetchMovies()
     }
     func validationError(errorMessage: String) {
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        displayErrorAlert(errorMessage: errorMessage)
     }
     func filterCancelViewPressed() {
         self.removeFilterView()
