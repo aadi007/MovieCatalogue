@@ -28,7 +28,8 @@ final class MovieListViewModel {
             queryArray.append((minYear + i).description)
         }
     }
-    func setfilterQuery(minyear: Int, maxYear: Int) {
+    @discardableResult
+    func setfilterQuery(minyear: Int, maxYear: Int) -> [String] {
         self.minYear = minyear
         self.maxYear = maxYear
         queryArray.removeAll()
@@ -37,6 +38,7 @@ final class MovieListViewModel {
         queryIndex = 0
         totalPages = -1
         movies.removeAll()
+        return queryArray
     }
     func fetchConfig(completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
         networkResource.request(NetworkRouter.getConfig(apiKey: API_KEY)) { result in

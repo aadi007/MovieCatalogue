@@ -250,11 +250,11 @@
 		157386702204D7BA000F3317 /* MovieCatalogueTests */ = {
 			isa = PBXGroup;
 			children = (
+				157386712204D7BA000F3317 /* MovieCatalogueTests.swift */,
+				1535A41A2206B31800F376A6 /* MovieDetailTests.swift */,
 				1535A4162206A9FC00F376A6 /* NetworkManagerTests.swift */,
 				1573868F2204DE9C000F3317 /* Stubs */,
-				157386712204D7BA000F3317 /* MovieCatalogueTests.swift */,
 				157386732204D7BA000F3317 /* Info.plist */,
-				1535A41A2206B31800F376A6 /* MovieDetailTests.swift */,
 			);
 			path = MovieCatalogueTests;
 			sourceTree = "<group>";
