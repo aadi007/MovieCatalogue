@@ -53,7 +53,7 @@ class NetworkManagerTests: XCTestCase {
         }
         waitForExpectations(timeout: 30, handler: nil)
         XCTAssertNil(responseError)
-        XCTAssertEqual(statusCode, 200)
+        XCTAssertEqual(statusCode, 401)
     }
 
 
