@@ -67,13 +67,7 @@ final class MovieListViewModel {
     }
     func fetchMovies(completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
         if isLastPage() {
-            queryIndex += 1
-            if queryIndex == queryArray.count {
-                return
-            }
-            //logic to rest the pages and paginated data
-            page = 0
-            totalPages = -1
+            return
         }
         page += 1
         let currentYear = queryArray[queryIndex]
@@ -108,7 +102,14 @@ final class MovieListViewModel {
     }
     func isLastPage() -> Bool {
         if totalPages == page {
-            return true
+            queryIndex += 1
+            if queryIndex == queryArray.count {
+                return true
+            }
+            //logic to rest the pages and paginated data
+            page = 0
+            totalPages = -1
+            return false
         } else {
             return false
         }

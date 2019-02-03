@@ -40,6 +40,7 @@ final class MovieListViewController: UIViewController {
                 //reload the data
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
+                    self.tableView.hideLoadingFooter()
                 })
             }
         })
@@ -83,7 +84,8 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         return viewModel.movies.count
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.movies.count - 1 {
+        if indexPath.row == viewModel.movies.count - 1 && !viewModel.isLastPage() && !tableView.isLoadingFooterShowing() {
+            tableView.showLoadingFooter()
             self.fetchMovies()
         }
     }
