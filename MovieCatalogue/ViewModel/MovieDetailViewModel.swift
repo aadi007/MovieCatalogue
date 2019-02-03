@@ -17,7 +17,7 @@ class MovieDetailViewModel: NSObject {
         self.networkResource = networkProvider
     }
     func fetchMovieDetails(id: Double, completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
-        networkResource.request(NetworkRouter.getMovieDetails(id: id)) { result in
+        networkResource.request(NetworkRouter.getMovieDetails(apiKey: API_KEY, id: id)) { result in
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode

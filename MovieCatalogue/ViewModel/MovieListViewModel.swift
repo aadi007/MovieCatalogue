@@ -39,7 +39,7 @@ final class MovieListViewModel {
         movies.removeAll()
     }
     func fetchConfig(completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
-        networkResource.request(NetworkRouter.getConfig) { result in
+        networkResource.request(NetworkRouter.getConfig(apiKey: API_KEY)) { result in
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode
@@ -71,7 +71,7 @@ final class MovieListViewModel {
         }
         page += 1
         let currentYear = queryArray[queryIndex]
-        networkResource.request(NetworkRouter.searchMovies(page: page, query: currentYear)) { result in
+        networkResource.request(NetworkRouter.searchMovies(apiKey: API_KEY, page: page, query: currentYear)) { result in
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode

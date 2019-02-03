@@ -53,6 +53,7 @@
 		1535A4132206144200F376A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4122206144100F376A6 /* UIView+Additions.swift */; };
 		1535A4142206144200F376A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4122206144100F376A6 /* UIView+Additions.swift */; };
 		1535A4152206144200F376A6 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4122206144100F376A6 /* UIView+Additions.swift */; };
+		1535A4182206A9FC00F376A6 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1535A4162206A9FC00F376A6 /* NetworkManagerTests.swift */; };
 		1573865D2204D7B7000F3317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1573865C2204D7B7000F3317 /* AppDelegate.swift */; };
 		157386622204D7B7000F3317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 157386602204D7B7000F3317 /* Main.storyboard */; };
 		157386642204D7BA000F3317 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 157386632204D7BA000F3317 /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		1535A4092205FF6A00F376A6 /* MovieFilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieFilterView.xib; sourceTree = "<group>"; };
 		1535A40D2206028F00F376A6 /* MovieFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFilterView.swift; sourceTree = "<group>"; };
 		1535A4122206144100F376A6 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		1535A4162206A9FC00F376A6 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		157386592204D7B7000F3317 /* MovieCatalogue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieCatalogue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1573865C2204D7B7000F3317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		157386612204D7B7000F3317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		157386702204D7BA000F3317 /* MovieCatalogueTests */ = {
 			isa = PBXGroup;
 			children = (
+				1535A4162206A9FC00F376A6 /* NetworkManagerTests.swift */,
 				1573868F2204DE9C000F3317 /* Stubs */,
 				157386712204D7BA000F3317 /* MovieCatalogueTests.swift */,
 				157386732204D7BA000F3317 /* Info.plist */,
@@ -556,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1535A4182206A9FC00F376A6 /* NetworkManagerTests.swift in Sources */,
 				1535A3EF220569AF00F376A6 /* MovieListViewCell.swift in Sources */,
 				1535A3E622055A7400F376A6 /* ImageConfiguration.swift in Sources */,
 				1535A3D8220555D700F376A6 /* MovieListViewController.swift in Sources */,
