@@ -25,10 +25,11 @@ class MovieCatalogueUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testMovieListLoaded() {
+        let app = XCUIApplication()
+        let tablesQuery = app.tables
+        XCTAssert(tablesQuery.count > 0)
     }
 
 }
