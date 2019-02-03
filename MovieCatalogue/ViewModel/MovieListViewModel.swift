@@ -9,8 +9,8 @@
 import UIKit
 import ObjectMapper
 final class MovieListViewModel {
-    var maxYear = 2019
-    var minYear = 2019
+    var maxYear = 2018
+    var minYear = 2018
     var imageConfig: ImageConfiguration?
     private var queryArray = [String]()
     private var networkResource: NetworkProvider<NetworkRouter> = AppProvider.networkManager
@@ -28,7 +28,8 @@ final class MovieListViewModel {
             queryArray.append((minYear + i).description)
         }
     }
-    func setfilterQuery(minyear: Int, maxYear: Int) {
+    @discardableResult
+    func setfilterQuery(minyear: Int, maxYear: Int) -> [String] {
         self.minYear = minyear
         self.maxYear = maxYear
         queryArray.removeAll()
@@ -37,9 +38,10 @@ final class MovieListViewModel {
         queryIndex = 0
         totalPages = -1
         movies.removeAll()
+        return queryArray
     }
     func fetchConfig(completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
-        networkResource.request(NetworkRouter.getConfig) { result in
+        networkResource.request(NetworkRouter.getConfig(apiKey: API_KEY)) { result in
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode
@@ -67,17 +69,11 @@ final class MovieListViewModel {
     }
     func fetchMovies(completionHandler: @escaping ((_ errorMessage: String?) -> Void)) {
         if isLastPage() {
-            queryIndex += 1
-            if queryIndex == queryArray.count {
-                return
-            }
-            //logic to rest the pages and paginated data
-            page = 0
-            totalPages = -1
+            return
         }
         page += 1
         let currentYear = queryArray[queryIndex]
-        networkResource.request(NetworkRouter.searchMovies(page: page, query: currentYear)) { result in
+        networkResource.request(NetworkRouter.searchMovies(apiKey: API_KEY, page: page, query: currentYear)) { result in
             switch result {
             case let .success(moyaResponse):
                 let statusCode = moyaResponse.statusCode
@@ -108,7 +104,14 @@ final class MovieListViewModel {
     }
     func isLastPage() -> Bool {
         if totalPages == page {
-            return true
+            queryIndex += 1
+            if queryIndex == queryArray.count {
+                return true
+            }
+            //logic to rest the pages and paginated data
+            page = 0
+            totalPages = -1
+            return false
         } else {
             return false
         }

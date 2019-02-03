@@ -11,23 +11,25 @@ import ObjectMapper
 class Movie: Mappable {
     var id: Double = 0
     var votesCount: Double = 0
-    var voteAverage = 0
+    var voteAverage: Double = 0
     var title: String?
     var posterPath: String?
     var adult = false
     var overView: String?
     var releaseDate: String?
+    var popularity: Double = 0
     required init?(map: Map) {
     }
     func mapping(map: Map) {
         id             <- map["id"]
-        votesCount       <- map["votes_count"]
+        votesCount       <- map["vote_count"]
         voteAverage      <- map["vote_average"]
         title           <- map["title"]
         posterPath       <- map["poster_path"]
         adult           <- map["adult"]
         overView        <- map["overview"]
         releaseDate      <- map["release_date"]
+        popularity       <- map["popularity"]
     }
 }
 

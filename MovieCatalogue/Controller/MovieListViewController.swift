@@ -25,7 +25,8 @@ final class MovieListViewController: UIViewController {
             if errorMessage == nil {
                 self.fetchMovies()
             } else {
-               MBProgressHUD.hide(for: self.view, animated: true)
+                self.displayErrorAlert(errorMessage: errorMessage ?? "Unknown Error")
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
         }
     }
@@ -35,11 +36,14 @@ final class MovieListViewController: UIViewController {
             guard let `self` = self else { return }
             MBProgressHUD.hide(for: self.view, animated: true)
             if errorMessage != nil {
-                //show the error Message
+                DispatchQueue.main.async(execute: {
+                    self.displayErrorAlert(errorMessage: errorMessage ?? "Unknown Error")
+                })
             } else {
                 //reload the data
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
+                    self.tableView.hideLoadingFooter()
                 })
             }
         })
@@ -71,6 +75,8 @@ final class MovieListViewController: UIViewController {
     func removeFilterView() {
         backgroundView?.removeFromSuperview()
         filterView?.removeFromSuperview()
+        backgroundView = nil
+        filterView = nil
     }
 }
 extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -81,7 +87,8 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
         return viewModel.movies.count
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.movies.count - 1 {
+        if indexPath.row == viewModel.movies.count - 1 && !viewModel.isLastPage() && !tableView.isLoadingFooterShowing() {
+            tableView.showLoadingFooter()
             self.fetchMovies()
         }
     }
@@ -106,15 +113,13 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
 extension MovieListViewController: MovieFilterViewDelegate {
     func filterResult(minYear: Int, maxYear: Int) {
         self.removeFilterView()
-        viewModel.setfilterQuery(minyear: minYear, maxYear: maxYear)
+        _ = viewModel.setfilterQuery(minyear: minYear, maxYear: maxYear)
         self.tableView.reloadData()
         MBProgressHUD.showAdded(to: self.view, animated: true)
         self.fetchMovies()
     }
     func validationError(errorMessage: String) {
-        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        displayErrorAlert(errorMessage: errorMessage)
     }
     func filterCancelViewPressed() {
         self.removeFilterView()

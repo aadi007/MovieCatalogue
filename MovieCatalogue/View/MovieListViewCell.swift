@@ -11,6 +11,8 @@ import SDWebImage
 
 class MovieListViewCell: UITableViewCell {
     @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var voteAverageLabel: UILabel!
+    @IBOutlet weak var popularityLabel: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     override func awakeFromNib() {
@@ -39,5 +41,7 @@ class MovieListViewCell: UITableViewCell {
             let completeUrl = baseUrl + "w500" + pathUrl
             posterImageView.sd_setImage(with: URL(string: completeUrl)!, completed: nil)
         }
+        popularityLabel.text = movie.popularity.description
+        voteAverageLabel.text = movie.voteAverage.description
     }
 }

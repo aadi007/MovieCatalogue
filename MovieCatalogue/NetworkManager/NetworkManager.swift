@@ -13,9 +13,9 @@ let API_KEY = "a0332783bce8a7c77ad0c76a4071c1a1"
 
 public typealias NetworkProvider = MoyaProvider
 enum NetworkRouter {
-    case getConfig
-    case searchMovies(page: Int, query: String)
-    case getMovieDetails(id: Double)
+    case getConfig(apiKey: String)
+    case searchMovies(apiKey: String, page: Int, query: String)
+    case getMovieDetails(apiKey: String, id: Double)
 }
 extension NetworkRouter: TargetType {
     var baseURL: URL { return URL(string: "https://api.themoviedb.org/3/")! }
@@ -25,7 +25,7 @@ extension NetworkRouter: TargetType {
             return "configuration"
         case .searchMovies:
             return "search/movie"
-        case .getMovieDetails(let id):
+        case .getMovieDetails(_, let id):
             return "movie/\(id)"
         }
     }
@@ -39,11 +39,11 @@ extension NetworkRouter: TargetType {
     }
     var task: Task {
         switch self {
-        case .getConfig,
-            .getMovieDetails:
-            return .requestParameters(parameters: ["api_key": API_KEY], encoding: URLEncoding.queryString)
-        case let .searchMovies(page, query):
-            return .requestParameters(parameters: ["api_key": API_KEY, "page": page, "query": query], encoding: URLEncoding.queryString)
+        case let .getConfig(apiKey),
+            let .getMovieDetails(apiKey, _):
+            return .requestParameters(parameters: ["api_key": apiKey], encoding: URLEncoding.queryString)
+        case let .searchMovies(apiKey, page, query):
+            return .requestParameters(parameters: ["api_key": apiKey, "page": page, "query": query], encoding: URLEncoding.queryString)
         }
     }
     var sampleData: Data {

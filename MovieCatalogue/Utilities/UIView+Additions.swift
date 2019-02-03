@@ -19,3 +19,37 @@ extension UIView {
         self.layer.insertSublayer(layer, at: 0)
     }
 }
+
+extension UITableView {
+    func showLoadingFooter(){
+        let loadingFooter = UIActivityIndicatorView(style: .gray)
+        loadingFooter.frame.size.height = 50
+        loadingFooter.hidesWhenStopped = true
+        loadingFooter.startAnimating()
+        tableFooterView = loadingFooter
+    }
+    func hideLoadingFooter(){
+        let tableContentSufficentlyTall = (contentSize.height > frame.size.height)
+        let atBottomOfTable = (contentOffset.y >= contentSize.height - frame.size.height)
+        if atBottomOfTable && tableContentSufficentlyTall {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.contentOffset.y = self.contentOffset.y - 50
+            }, completion: { finished in
+                self.tableFooterView = UIView()
+            })
+        } else {
+            self.tableFooterView = UIView()
+        }
+    }
+    func isLoadingFooterShowing() -> Bool {
+        return tableFooterView is UIActivityIndicatorView
+    }
+}
+
+extension UIViewController {
+    func displayErrorAlert(errorMessage: String) {
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
