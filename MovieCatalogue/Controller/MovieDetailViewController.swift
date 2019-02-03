@@ -11,7 +11,7 @@ import MBProgressHUD
 final class MovieDetailViewController: UIViewController {
     var movieId: Double!
     var imageConfig: ImageConfiguration!
-    private var viewModel: MovieDetailViewModel!
+    var viewModel: MovieDetailViewModel!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
